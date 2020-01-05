@@ -1,0 +1,20 @@
+<h1 class="h1 my-3 text-center text-uppercase font-weight-lighter text-tracked">Products</h1>
+<ul class="list-unstyled products-list">
+  <% @products.each do |product| %>
+    <li class="card mb-3 product">
+      <div class="card-body">
+        <h2 class="h5 card-title"><%= product.name %>
+        <small class="badge badge-info">
+          <%= product.age_low %>-<%= product.age_high %> <%= product.age_units %>
+        </small>
+        </h2>
+        <p class="card-text">
+          <%= number_to_currency(product.price_cents / 100) %>
+          <div>
+            <%= link_to "More Details…", product, class: "card-link btn btn-lg btn-success text-uppercase font-weight-bolder text-tracked f-small" %>
+          </div>
+        </p>
+      </div>
+    </li>
+  <% end %>
+</ul>

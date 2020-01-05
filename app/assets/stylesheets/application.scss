@@ -1,0 +1,65 @@
+* {
+  font-size: 18px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$theme-colors: (
+  "primary": rgb(41, 201, 95),
+  "info": rgb(78, 219, 201)
+);
+
+$jumbotron-bg: white;
+$font-family-sans-serif: "Helvetica Neue", "helvetica", sans-serif;
+$body-color: #495057;
+
+@import "bootstrap/scss/bootstrap";
+
+.text-tracked {
+  letter-spacing: 0.2rem;
+}
+
+
+.text-normal {
+  color: #495057;
+}
+
+.btn-info, .badge-info {
+  color: white;
+}
+.f-small {
+  font-size: $font-size-sm;
+}
+main.container {
+  background-color: rgb(254, 251, 239);
+}
+
+.bg-light {
+  background-color: white !important;
+}
+
+.main-logo {
+  width: 100%;
+  height: 2rem;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("https://cdn.shopify.com/s/files/1/2386/2119/t/2/assets/logo-green.svg");
+  background-repeat: no-repeat;
+  background-origin: padding-box;
+  background-position: 50% 50%;
+  background-size: auto;
+}

@@ -1,0 +1,61 @@
+<% if @order.errors.any? %>
+  <aside class="alert alert-danger m-3" role="alert">
+    <%= @order.errors.full_messages.join(",") %>
+  </aside>
+<% end %>
+<section class="mt-2 pt-3">
+<h1 class="h2 text-center text-uppercase text-tracked">Check Out</h1>
+<h2 class="h4 mt-4"><%= @order.product.name %></h2>
+<h3 class="h5 font-weight-normal mb-3"><%= number_to_currency(@order.product.price_cents / 100) %></h3>
+<%= form_with model: @order, local: true  do |form| %>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= form.label :shipping_name, "Your Name" %>
+      <%= form.text_field :shipping_name, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :child_full_name, "Your Child's Name" %>
+      <%= form.text_field :child_full_name, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :child_birthdate, "Your Child's Birthdate (or expected date)" %>
+      <%= form.text_field :child_birthdate, class: "form-control" %>
+      <small id="passwordHelpBlock" class="form-text text-muted">
+        Use format YYYY-MM-DD
+      </small>
+    </div>
+  </div>
+  <div class="form-row">
+    <%= form.hidden_field :product_id %>
+    <div class="form-group col-md-8">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "form-control", placeholder: "e.g. 123 Any St" %>
+    </div>
+    <div class="form-group col-md-4">
+      <%= form.label :zipcode %>
+      <%= form.text_field :zipcode, class: "form-control", placeholder: "e.g. 83701" %>
+    </div>
+  </div>
+  <div class="border rounded p-3 bg-light">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <%= form.label :credit_card_number %>
+        <%= form.password_field :credit_card_number, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <%= form.label :expiration_month %>
+        <%= form.text_field :expiration_month, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-3">
+        <%= form.label :expiration_year %>
+        <%= form.text_field :expiration_year, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="p-3">
+    <%= form.submit("Purchase", class: "btn btn-primary btn-lg") %>
+  </div>
+<% end %>
+</section>

@@ -1,0 +1,24 @@
+<article class="p-3">
+  <% if @order.paid? %>
+    <h1>Thanks for Your Order!</h1>
+  <% else %>
+    <h1>Problem with your order</h1>
+  <% end %>
+  <section class="card border rounded rounded-lg <%= @order.paid? ? 'bg-success' : 'bg-danger' %> text-light">
+    <div class="card-body">
+      <h2 class="card-title h4">Order <span class="font-weight-normal h5">#<%= @order.user_facing_id %></span></h2>
+      <h3 class="card-subtitle text-white font-weight-lighter h5 mb-2">
+        <%= @order.product.name %>
+        for
+        <strong><%= @order.child.full_name %></strong>
+      </h3>
+      <p class="card-text">
+        <% if @order.paid? %>
+          Paid <span class="text-white font-weight-bold"><%= number_to_currency(@order.product.price_cents / 100) %></span> on <%= @order.created_at.strftime("%B %d, %Y") %>.
+        <% else %>
+          Unable to charge <%= number_to_currency(@order.product.price_cents / 100) %>. Please contact us.
+        <% end %>
+      </p>
+    </div>
+  </section>
+</article>

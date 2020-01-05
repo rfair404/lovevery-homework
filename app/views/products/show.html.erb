@@ -1,0 +1,15 @@
+<article class="jumbotron mt-3">
+  <h1 class="h2"><%= @product.name %></h1>
+  <h2 class="h3 text-muted font-weight-normal"><%= @product.age_low %> – <%= @product.age_high %> <%= @product.age_units %></h2>
+  <p class="lead">
+    <%= @product.description %>
+  </p>
+  <%= link_to new_order_path(product_id: @product.id), class: "btn btn-primary btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
+    Buy Now <%= number_to_currency(@product.price_cents / 100) %>
+  <% end %>
+</article>
+<nav class="pb-4">
+  <%= link_to products_path, class: "text-normal font-weight-bolder" do %>
+    &larr; Back to Products
+  <% end %>
+</nav>

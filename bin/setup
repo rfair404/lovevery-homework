@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  puts "➡️  Running '#{args}'"
+  system(*args) || abort("🛑 Command #{args} failed")
+end
+
+FileUtils.chdir APP_ROOT do
+  puts "✅ Installing gems"
+  system("bundle check") || system!("bundle install")
+
+  puts "✅ Dropping dev & test databases"
+  system! "bin/rails db:drop"
+  puts "✅ Preparing dev & test databases"
+  system! "bin/rails db:prepare"
+  puts "✅ Loading seeds into dev database"
+  system! "bin/rails db:seed"
+
+  puts "✅ Everything looks good"
+  puts
+  puts "    bin/rails s                 # start the app"
+  puts "    bin/rails c                 # get Rails console/REPL"
+  puts "    bin/rails dbconsole         # get a SQL console into the dev database"
+  puts "    bin/rails dbconsole -e test # get a SQL console into the test database"
+  puts
+  puts "    Testing:"
+  puts "        bin/rspec                             # run all tests"
+  puts "        bin/rspec spec/features               # run all integration tests"
+  puts "        bin/rspec spec/models/product_spec.rb # Run just the tests in product_spec.rb"
+  puts
+  puts "Also, don't forget to look at the README"
+end
