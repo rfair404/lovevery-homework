@@ -12,7 +12,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 #added these to address vulnerabilities
-gem "rubyzip", ">= 1.3.0"
 gem "nokogiri", ">= 1.10.8"
 gem "actionview", ">= 6.0.2.2"
 
@@ -26,7 +25,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  #gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 
