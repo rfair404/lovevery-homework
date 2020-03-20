@@ -206,8 +206,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionview (>= 6.0.2.2)
   capybara (>= 2.15)
   jbuilder (~> 2.7)
+  nokogiri (>= 1.10.8)
   puma (~> 4.3)
   rails (~> 6.0.0)
   rspec-rails

@@ -10,7 +10,13 @@ gem 'sass-rails', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+
+#added these to address vulnerabilities
 gem "rubyzip", ">= 1.3.0"
+gem "nokogiri", ">= 1.10.8"
+gem "actionview", ">= 6.0.2.2"
+
+
 
 
 group :development do
